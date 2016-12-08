@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<script
+src="http://maps.googleapis.com/maps/api/js">
+</script>
+<script>
+function initMap() {
+  var casa = {lat: -7.163960, lng:-78.508419};
+  var upn = {lat: -7.151097, lng: -78.506467};
+
+  var map = new google.maps.Map(document.getElementById("map"), {
+    center: casa,
+    scrollwheel: false,
+    zoom: 10
+  });
+
+  var directionsDisplay = new google.maps.DirectionsRenderer({
+    map: map
+  });
+
+  // Set destination, origin and travel mode.
+  var request = {
+    destination: upn,
+    origin: casa,
+    travelMode: google.maps.TravelMode.DRIVING
+  };
+
+  // Pass the directions request to the directions service.
+  var directionsService = new google.maps.DirectionsService();
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      // Display the route on the map.
+      directionsDisplay.setDirections(response);
+    }
+  });
+}
+google.maps.event.addDomListener(window, 'load', initMap);
+</script>
+  <meta charset="UTF-8">
+  <title>Mapa</title>
+</head>
+<body>
+   <center>
+  <div id="map" style="width:800px;height:380px;border:1px solid red;	">
+  </div>
+   </center>
+
+
+<a class="twitter-timeline" href="https://twitter.com/UPN_Oficial">
+Tweets by UPN_Oficial</a> 
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          
+
+
+</body>
+</html>
